@@ -74,6 +74,15 @@ body.isNativeMobile {
   }
 }
 
+
+// Experimental POCO X3 / MIUI 12 workaround for 3-button navigation.
+// Some devices may report less bottom safe area than the system nav bar needs.
+// Keep Android's reported inset when larger; enforce a 48 CSS px minimum.
+// Validate on-device before considering this a general fix.
+body.isNativeMobile:not(.isIOS) {
+  --bottom-nav-safe-area: max(var(--safe-area-bottom), 48px);
+}
+
 // iOS-specific adjustments
 body.isIOS {
   // Prevent overscroll bounce effect
